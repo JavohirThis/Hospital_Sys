@@ -21,11 +21,7 @@ class PersonModel(models.Model):
     phone_number = PhoneNumberField(blank = True)
     email = models.EmailField(max_length=100, blank= True)
     gender = models.CharField(max_length=20, default='')
-    class Age(models.Model):
-        birth_date = models.DateField()
-    def get_age(self):
-        age = datetime.date.today()-self.birth_date
-        return int((age).days/365.25)
+    age = models.DateField(null=True, blank=True, default=None)
     adress = models.CharField(max_length=200, default='')
     created_at = models.DateTimeField(default= datetime.now)
     updated_at = models.DateTimeField(default=datetime.now)
@@ -40,7 +36,7 @@ class DepartmentModel(models.Model):
     description = models.CharField(max_length=3000, default='') 
     def __str__(self) -> str:
         return self.name
-    
+    0
     class Meta:
         db_table = 'department'
 
